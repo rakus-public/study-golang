@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Study Golang</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/css/uikit.min.css"
+    />
+  </head>
+  <body>
+    <nav
+      class="uk-navbar-container uk-margin uk-padding uk-padding-remove-vertical"
+      uk-navbar
+    >
+      <a class="uk-navbar-item uk-logo" href="./index.html">Study Golang</a>
+
+      <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+          <li>
+            <a href="./wsl.html">Setup Docker on WSL2</a>
+          </li>
+          <li>
+            <a href="./multipass.html">Setup Docker for on Multipass</a>
+          </li>
+          <li>
+            <a href="./golang.html">Setup Golang</a>
+          </li>
+          <li>
+            <a href="./go-task.html">Setup GoTask</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="uk-container uk-margin-large">
+      <article class="uk-article">
+        <h2 id="get-started">Get Started</h2>
+        <p>
+          <a href="./marp/installation.html" target="_blank">
+            コチラのスライド
+          </a>
+          に環境のセットアップおよび <code>tutorial</code>
+          の進め方、動作確認などが掲載されていますので一読ください
+        </p>
+        <p>
+          別途環境別の Docker や Go
+          のセットアップ方法の詳細はヘッダーに個別ページへのリンクがあります。
+          そちらも参考にして開発環境を整えてください。
+        </p>
+        <h2 id="setup">Set Up</h2>
+        <p>テストの実行用に以下のタスクランナーを使用する想定です。</p>
+        <ul>
+          <li><a href="https://taskfile.dev/">Task</a></li>
+        </ul>
+        <p>
+          利用しなくともテストの実行は可能ですが、すぐにインストールできるためよろしければ導入ください。
+          また、タスクを実行する際はプロジェクトルートにて実行してください。
+        </p>
+        <h3 id="via-go-module">Via Go Module</h3>
+        <p>
+          Go をローカルにインストール済みの方は OS
+          を問わず以下のコマンドで導入可能です。
+        </p>
+        <pre><code class="lang-bash">go install github.com/go-<span class="hljs-keyword">task</span>/<span class="hljs-keyword">task</span>/v3/cmd/<span class="hljs-keyword">task</span>@latest
+</code></pre>
+        <h3 id="for-mac">For Mac</h3>
+        <pre><code class="lang-bash">brew install go-<span class="hljs-keyword">task</span><span class="hljs-regexp">/tap/g</span>o-<span class="hljs-keyword">task</span>
+</code></pre>
+        <h3 id="for-linux">For Linux</h3>
+        <pre><code class="lang-bash">sh -c <span class="hljs-string">"<span class="hljs-variable">$(curl --location https://taskfile.dev/install.sh)</span>"</span> -- <span class="hljs-_">-d</span> -b ~/.local/bin
+</code></pre>
+        <h3 id="for-windows">For Windows</h3>
+        <pre><code class="lang-bash">choco <span class="hljs-keyword">install</span> <span class="hljs-keyword">go</span>-task
+</code></pre>
+        <h2 id="subject">Subject</h2>
+        <p>各パッケージとその課題詳細は以下の通りです。</p>
+        <table class="uk-table uk-table-divider">
+          <thead>
+            <tr>
+              <th style="text-align: left">Tool</th>
+              <th style="text-align: left">Desc</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: left"><code>tutorial</code></td>
+              <td style="text-align: left">
+                <a
+                  href="https://github.com/rakus-public/study-golang/tree/main/tutorial/README.md"
+                  >README</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><code>curl</code></td>
+              <td style="text-align: left">
+                <a
+                  href="https://github.com/rakus-public/study-golang/tree/main/curl/README.md"
+                  >README</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><code>cgrep</code></td>
+              <td style="text-align: left">
+                <a
+                  href="https://github.com/rakus-public/study-golang/tree/main/cgrep/README.md"
+                  >README</a
+                >
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><code>logtransfer</code></td>
+              <td style="text-align: left">
+                <a
+                  href="https://github.com/rakus-public/study-golang/tree/main/logtransfer/README.md"
+                  >README</a
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <h2 id="test">Test</h2>
+        <p>
+          各パッケージごとにテスト実行用のタスクを定義しています。
+          今回は同一ファイル内で実施日が異なるケースが多々存在するため、関数名を指定して実行するためのタスクを用意しています。
+          タスクに Args を渡す場合、
+          <code>&lt;CMD&gt; -- &lt;Args&gt;</code> のようにハイフン 2
+          つを挟むようにしてください。
+        </p>
+        <table class="uk-table uk-table-striped">
+          <thead>
+            <tr>
+              <th style="text-align: left">Task</th>
+              <th style="text-align: left">Args</th>
+              <th style="text-align: left">Desc</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: left"><code>task test_tutorial</code></td>
+              <td style="text-align: left">package (chapter) 名</td>
+              <td style="text-align: left">
+                <code>tutorial</code>
+                パッケージ配下の指定したチャプターのテストを実行します
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><code>task test_curl</code></td>
+              <td style="text-align: left">-</td>
+              <td style="text-align: left">
+                <code>curl</code> パッケージ配下のテストをすべて実行します
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><code>task test_curl_fn</code></td>
+              <td style="text-align: left">関数・メソッド名</td>
+              <td style="text-align: left">
+                <code>curl</code> パッケージ配下のテストの内、テスト名が
+                <code>&lt;Args&gt;</code> に一致するもののみ実行します
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><code>task test_cgrep</code></td>
+              <td style="text-align: left">-</td>
+              <td style="text-align: left">
+                <code>cgrep</code> パッケージ配下のテストをすべて実行します
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><code>task test_cgrep_fn</code></td>
+              <td style="text-align: left">関数・メソッド名</td>
+              <td style="text-align: left">
+                <code>cgrep</code> パッケージ配下のテストの内、テスト名が
+                <code>&lt;Args&gt;</code> に一致するもののみ実行します
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><code>task test_lt</code></td>
+              <td style="text-align: left">-</td>
+              <td style="text-align: left">
+                <code>logtransfer</code>
+                パッケージ配下のテストをすべて実行します
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><code>task test_lt_fn</code></td>
+              <td style="text-align: left">関数・メソッド名</td>
+              <td style="text-align: left">
+                <code>logtransfer</code> パッケージ配下のテストの内、テスト名が
+                <code>&lt;Args&gt;</code> に一致するもののみ実行します
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          なお、 <code>cgrep</code> と
+          <code>logtransfer</code> は非同期処理を用いる兼ね合いで、15
+          秒のタイムアウトを設けています。 正常に実装できていれば 15
+          秒を超えることは無いので、実装にミスが有ります。
+        </p>
+        <h2 id="build">Build</h2>
+        <p>
+          <code>tutorial</code>
+          以外のパッケージは実装が完了したら実際にバイナリ化して使用することができます。
+          出力したバイナリに Path が通っていれば、他の CLI
+          と同じように使用することができます。
+        </p>
+        <p>各ツールのビルド用タスクおよびバイナリ名は以下のとおりです。</p>
+        <table class="uk-table uk-table-striped">
+          <thead>
+            <tr>
+              <th style="text-align: left">Tool</th>
+              <th style="text-align: left">Task</th>
+              <th style="text-align: left">binary</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: left"><code>curl</code></td>
+              <td style="text-align: left"><code>task build_curl</code></td>
+              <td style="text-align: left"><code>scurl</code></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><code>cgrep</code></td>
+              <td style="text-align: left"><code>task build_cgrep</code></td>
+              <td style="text-align: left"><code>cgrep</code></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><code>logtransfer</code></td>
+              <td style="text-align: left"><code>task build_lt</code></td>
+              <td style="text-align: left"><code>lt</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          バイナリは各ツールのルートディレクトリ（go.mod
+          があるところ）に出力されます。
+        </p>
+        <p>注）出力されるバイナリは実行環境に合わせてコンパイルされます</p>
+      </article>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit-icons.min.js"></script>
+  </body>
+</html>

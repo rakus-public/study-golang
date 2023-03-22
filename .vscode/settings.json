@@ -1,0 +1,46 @@
+{
+  "go.useLanguageServer": true,
+  "gopls": {
+    "ui.diagnostic.staticcheck": true,
+    "ui.completion.usePlaceholders": true
+  },
+  "go.lintTool": "staticcheck",
+  "go.autocompleteUnimportedPackages": true,
+  "go.installDependenciesWhenBuilding": false,
+  "go.toolsManagement.autoUpdate": true,
+  "go.useCodeSnippetsOnFunctionSuggest": true,
+  "go.generateTestsFlags": ["--template=testify", "-exported"],
+  "go.editorContextMenuCommands": {
+    "removeTags": true,
+    "fillStruct": true,
+    "testFile": true,
+    "testPackage": true,
+    "generateTestForFile": true,
+    "benchmarkAtCursor": true
+  },
+  "[go]": {
+    "editor.insertSpaces": false,
+    "editor.defaultFormatter": "golang.go"
+  },
+  "cSpell.words": [
+    "Anson",
+    "CEINTL",
+    "cgrep",
+    "cmds",
+    "eamodio",
+    "errc",
+    "Gruntfuggly",
+    "hoge",
+    "httpmock",
+    "logtransfer",
+    "mhutchie",
+    "mosapride",
+    "rawurl",
+    "scurl",
+    "SIGTERM",
+    "stretchr",
+    "testdata",
+    "yzhang",
+    "zenkaku"
+  ]
+}

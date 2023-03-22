@@ -1,0 +1,9 @@
+go 1.19
+
+use (
+	tutorial
+	logtransfer
+	curl
+	cgrep
+	lib/log-browser
+)
