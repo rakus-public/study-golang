@@ -1,0 +1,25 @@
+name: Testing Chapter 00
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "tutorial/subject/chapter00/**.go"
+
+env:
+  TARGET: chapter00
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version-file: ./tutorial/go.mod
+
+      - id: result
+        name: Go Test
+        run: go test -v ./tutorial/subject/${TARGET}

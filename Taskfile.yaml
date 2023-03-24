@@ -1,0 +1,91 @@
+# https://taskfile.dev
+
+version: "3"
+
+tasks:
+  test_tutorial:
+    desc: Execute tests at tutorial's chapter
+    dir: ./tutorial/subject
+    cmds:
+      - go test -v ./{{ .CLI_ARGS }}/...
+    silent: true
+
+  test_curl:
+    desc: Execute tests at curl package
+    dir: ./curl
+    cmds:
+      - go test -v ./...
+
+  test_curl_fn:
+    desc: Execute tests only single function at curl package
+    dir: ./curl
+    cmds:
+      - go test -v -run {{.CLI_ARGS}} ./...
+    silent: true
+
+  build_curl:
+    desc: Build curl cli as scurl (for local OS and ARCH)
+    dir: ./curl
+    cmds:
+      - go build -o scurl main.go
+    silent: true
+
+  test_cgrep:
+    desc: Execute tests at cgrep package
+    dir: ./cgrep
+    cmds:
+      - go test -v -timeout 15s ./...
+
+  test_cgrep_fn:
+    desc: Execute tests only single function at cgrep package
+    dir: ./cgrep
+    cmds:
+      - go test -v -timeout 15s -run {{.CLI_ARGS}} ./...
+    silent: true
+
+  build_cgrep:
+    desc: Build cgrep cli (for local OS and ARCH)
+    dir: ./cgrep
+    cmds:
+      - go build -o cgrep main.go
+    silent: true
+
+  test_lt:
+    desc: Execute tests at logtransfer package
+    dir: ./logtransfer
+    cmds:
+      - go test -v -timeout 15s ./...
+    silent: true
+
+  test_lt_fn:
+    desc: Execute tests only single function at logtransfer package
+    dir: ./logtransfer
+    cmds:
+      - go test -v -timeout 15s -run {{.CLI_ARGS}} ./...
+    silent: true
+
+  build_lt:
+    desc: Build logtransfer cli as lt (for local OS and ARCH)
+    dir: ./logtransfer
+    cmds:
+      - go build -o lt main.go
+    silent: true
+
+  preview_lt:
+    desc: Preview logtransfer cli at local (require docker-compose up)
+    cmds:
+      - go run ./logtransfer/ http://localhost:3000/logs sh ./logtransfer/testdata/loop.sh
+    silent: true
+
+  preview_lt_docker:
+    desc: Preview logtransfer cli in docker container or dev-container (require docker-compose up)
+    cmds:
+      - go run ./logtransfer/ http://browser:3000/logs sh ./logtransfer/testdata/loop.sh
+    silent: true
+
+  marp:
+    cmds:
+      - docker run --rm -v $PWD/assets/marp:/home/marp/app/ -e MARP_USER="$(id -u):$(id -g)" -e LANG=$LANG marpteam/marp-cli --html true {{.CLI_ARGS}}
+      - mv $PWD/assets/marp/$(echo {{.CLI_ARGS}} | awk -F . '{print $1".html"}') $PWD/docs/marp/
+      - cp -r $PWD/assets/marp/img $PWD/docs/marp/
+    silent: true
