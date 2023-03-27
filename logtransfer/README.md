@@ -85,6 +85,16 @@ logtransfer https://sample.com sh ./sample.sh
     - `storage.Load()` の実行間隔は定数 `timeSpan` を利用して渡す
     - `output.Forward()` の送信先 URL は引数 `u *url.URL` を使用して渡す
 
+## テスト実行コマンド
+
+```bash
+# パッケージの全テストを実行する
+task test_cgrep
+
+# <FunctionName> に一致する名前の関数・メソッドのテストだけを実行する
+task test_cgrep_fn -- <FunctionName>
+```
+
 ## 動作プレビュー
 
 CLI 完成後、以下の手順で動作を確認できます。

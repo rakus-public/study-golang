@@ -178,3 +178,13 @@ $ go run main.go http://example.com -X POST -d '{"id":1}'
 [Body]
 "{\"status\":\"ok\"}"
 ```
+
+## テスト実行コマンド
+
+```bash
+# パッケージの全テストを実行する
+task test_curl
+
+# <FunctionName> に一致する名前の関数・メソッドのテストだけを実行する
+task test_curl_fn -- <FunctionName>
+```
