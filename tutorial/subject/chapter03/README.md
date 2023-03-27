@@ -97,5 +97,5 @@ for i := 0; i < 100; i++ {
 ## テスト実行コマンド
 
 ```bash
-task test -- chapter03
+task test_tutorial -- chapter03
 ```

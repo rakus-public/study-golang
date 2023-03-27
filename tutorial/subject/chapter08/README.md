@@ -63,5 +63,5 @@
 ## テスト実行コマンド
 
 ```bash
-task test -- chapter08
+task test_tutorial -- chapter08
 ```

@@ -91,5 +91,5 @@ Ramen     :      890
 ## テスト実行コマンド
 
 ```bash
-task test -- chapter07
+task test_tutorial -- chapter07
 ```
