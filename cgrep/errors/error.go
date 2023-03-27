@@ -31,6 +31,8 @@ func Error() error {
 
 // error を渡すとグローバル変数上に保存する関数
 func Set(err error) {
+	Store.Lock()
+	defer Store.Unlock()
 	Store.errs = append(Store.errs, err)
 }
 
