@@ -1,6 +1,8 @@
 package chapter01
 
-import "tutorial/helper"
+import (
+	"tutorial/helper"
+)
 
 // 初乗り料金
 const firstPrice = 500

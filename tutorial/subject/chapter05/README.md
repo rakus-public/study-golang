@@ -55,5 +55,5 @@ e.g.)
 ## テスト実行コマンド
 
 ```bash
-task test -- chapter05
+task test_tutorial -- chapter05
 ```

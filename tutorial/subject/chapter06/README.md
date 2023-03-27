@@ -48,5 +48,5 @@ aho.Call() // => "さぁん"
 ## テスト実行コマンド
 
 ```bash
-task test -- chapter06
+task test_tutorial -- chapter06
 ```

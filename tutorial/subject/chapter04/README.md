@@ -48,21 +48,23 @@ n = n + 3
 ```go
 var n = 10
 n += 3
-// => n == 13
+fmt.Println(n) // => 13
 ```
 
 `for` 構文で出てきた `i++` というのもこれの応用で、加減算する数値が `1` の場合のみ加減算記号を重ねるこのような書き方ができます。
 
 ```go
 var n = 10
+
 n++
-// => n == 11
+fmt.Println(n) // => 11
+
 n--
-// => n == 10
+fmt.Println(n) // => 10
 ```
 
 ## テスト実行コマンド
 
 ```bash
-task test -- chapter04
+task test_tutorial -- chapter04
 ```
