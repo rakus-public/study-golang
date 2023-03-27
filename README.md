@@ -1,5 +1,7 @@
 # Study Golang
 
+![](https://img.shields.io/hexpm/l/apa)
+
 ## Get Started
 
 [コチラのスライド](./docs/marp/installation.html) に環境のセットアップおよび `tutorial` の進め方、動作確認などが掲載されていますので一読ください
