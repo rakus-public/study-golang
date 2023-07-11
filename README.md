@@ -4,7 +4,7 @@
 
 ## Get Started
 
-[コチラのスライド](https://rakus-public.github.io/study-golang/) に環境のセットアップおよび `tutorial` の進め方、動作確認などが掲載されていますので一読ください
+[コチラのスライド](https://rakus-public.github.io/study-golang/marp/installation.html) に環境のセットアップおよび `tutorial` の進め方、動作確認などが掲載されていますので一読ください
 
 ## Set Up
 
